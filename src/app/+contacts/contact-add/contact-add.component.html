@@ -1,0 +1,294 @@
+<div class="widget-body-toolbar">
+  <div class="btn-group">
+    <button type="button" class="btn btn-success" [disabled]="loading===true" (click)="SubmitContact()" style="margin-bottom: 15px;">
+      Save
+    </button>
+    <button type="button" class="btn btn-info" [disabled]="loading===true" (click)="ResetContact()" style="margin-bottom: 15px;">
+      Reset
+    </button>
+    <button type="button" class="btn btn-danger" [disabled]="loading===true" (click)="CancelContact()" style="margin-bottom: 15px;">
+      Cancel
+    </button>
+  </div>
+</div>
+<div class="row">
+  <article class="col-sm-13 col-lg-10">
+    <div role="content">
+      <!-- widget content -->
+      <div class="widget-body smart-form">
+        <!-- <header>
+              <h2>Contact #{{contact_data.Contact}}</h2>
+            </header> -->
+        <fieldset>
+          <legend>
+            <strong>
+              Identifying Information
+            </strong>
+          </legend>
+          <div class="row">
+            <section class="col col-lg-4">
+              <label class="label">Status</label>
+              <label class="input">
+                <input type="text" [(ngModel)]="contact_data.Status" readonly>
+              </label>
+            </section>
+            <section class="col col-lg-8">
+              <label class="label">Company</label>
+              <label class="input">
+                <input type="text" [(ngModel)]="contact_data.Company" readonly>
+              </label>
+            </section>
+          </div>
+          <div class="row">
+            <section class="col col-lg-4">
+              <label class="label">Salutation</label>
+              <label class="select">
+                <select [(ngModel)]="contact_data.MrMs">
+                  <option value="Dr">Dr</option>
+                  <option value="Mr">Mr</option>
+                  <option value="Mrs">Mrs</option>
+                  <option value="MS">MS</option>
+                </select>
+                <i></i>
+              </label>
+            </section>
+            <section class="col col-lg-4">
+              <label class="label">First Name</label>
+              <label class="input" [ngClass]="{'state-error' : (browserclass=='false'),'state-success': (contact_data.FName != '') }">
+                <input type="text" [(ngModel)]="contact_data.FName">
+              </label>
+            </section>
+            <section class="col col-lg-4">
+              <label class="label">Last Name</label>
+              <label class="input" [ngClass]="{'state-error' : (browserclass=='false'),'state-success': (contact_data.LName != '') }">
+                <input type="text" [(ngModel)]="contact_data.LName">
+              </label>
+            </section>
+          </div>
+          <div class="row">
+            <section class="col col-lg-8">
+              <label class="label">Job Title</label>
+              <label class="input">
+                <input type="text" [(ngModel)]="contact_data.JobTitle">
+              </label>
+            </section>
+            <section class="col col-lg-4">
+              <label class="label">Full Name</label>
+              <label class="input">
+                <input type="text" [(ngModel)]="contact_data.FullName">
+              </label>
+            </section>
+          </div>
+          <div class="row">
+            <section class="col col-lg-8">
+              <label class="label">Role</label>
+              <label class="select">
+                <select [(ngModel)]="contact_data.ConRole">
+                  <option value="Accts Receivable">Accts Receivable</option>
+                  <option value="Administrative">Administrative</option>
+                  <option value="Billing">Billing</option>
+                  <option value="Clinical">Clinical</option>
+                  <option value="Compliance / QA">Compliance / QA</option>
+                  <option value="Executive">Executive</option>
+                  <option value="FD / Scheduling">FD / Scheduling</option>
+                  <option value="IT / Technical">IT / Technical</option>
+                  <option value="Main POC - Billing">Main POC - Billing</option>
+                  <option value="Main POC - Clinical">Main POC - Clinical</option>
+                  <option value="Main POC - Executive">Main POC - Executive</option>
+                  <option value="Main POC - Sys Admin">Main POC - Sys Admin</option>
+                  <option value="Medical - Dr/NP/RN">Medical - Dr/NP/RN</option>
+                  <option value="Medical Records">Medical Records</option>
+                  <option value="Non-Clinical">Non-Clinical</option>
+                </select>
+                <i></i>
+              </label>
+            </section>
+            <section class="col col-lg-4">
+              <label class="label">Affilliate</label>
+              <label class="select">
+                <select [(ngModel)]="contact_data.Resellee">
+                  <option value="No">No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+                <i></i>
+              </label>
+            </section>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>
+            <strong>
+              Contact Information
+            </strong>
+          </legend>
+          <div class="row">
+            <section class="col col-lg-12">
+              <label class="label">Address1</label>
+              <label class="input">
+                <input type="text" [(ngModel)]="contact_data.Address1">
+              </label>
+            </section>
+          </div>
+          <div class="row">
+            <section class="col col-lg-12">
+              <label class="label">Address2</label>
+              <label class="input">
+                <input type="text" [(ngModel)]="contact_data.Address2">
+              </label>
+            </section>
+          </div>
+          <div class="row">
+            <section class="col col-lg-4">
+              <label class="label">City</label>
+              <label class="input">
+                <input type="text" [(ngModel)]="contact_data.City">
+              </label>
+            </section>
+            <section class="col col-lg-4">
+              <label class="label">State</label>
+              <label class="input">
+                <input type="text" [(ngModel)]="contact_data.StatePr">
+              </label>
+            </section>
+            <section class="col col-lg-4">
+              <label class="label">Zip</label>
+              <label class="input">
+                <input type="text" [(ngModel)]="contact_data.ZipPost">
+              </label>
+            </section>
+          </div>
+          <div class="row">
+            <section class="col col-lg-4">
+              <label class="label">Country</label>
+              <label class="input">
+                <input type="text" [(ngModel)]="contact_data.Country">
+              </label>
+            </section>
+            <section class="col col-lg-4">
+              <label class="label">Location</label>
+              <label class="input">
+                <input type="text" [(ngModel)]="contact_data.Location">
+              </label>
+            </section>
+          </div>
+          <div class="row">
+            <section class="col col-lg-6">
+              <label class="label">Direct Phone</label>
+              <label class="input" [ngClass]="{'state-error' : (browserclass=='false'),'state-success': (contact_data.BPhone != '') }">
+                <input type="text" [(ngModel)]="contact_data.BPhone">
+              </label>
+            </section>
+            <section class="col col-lg-6">
+              <label class="label">Main Phone</label>
+              <label class="input">
+                <input type="text" [(ngModel)]="contact_data.AcctPhone">
+              </label>
+            </section>
+          </div>
+          <div class="row">
+            <section class="col col-lg-6">
+              <label class="label">Mobile Phone</label>
+              <label class="input">
+                <input type="text" [(ngModel)]="contact_data.Mobile">
+              </label>
+            </section>
+            <section class="col col-lg-6">
+              <label class="label">Email</label>
+              <label class="input">
+                <input type="text" [(ngModel)]="contact_data.email">
+              </label>
+            </section>
+          </div>
+          <div class="row">
+            <section class="col col-lg-6">
+              <label class="label">Fax</label>
+              <label class="input">
+                <input type="text" [(ngModel)]="contact_data.Fax">
+              </label>
+            </section>
+            <section class="col col-lg-6">
+              <label class="label">Email Status</label>
+              <label class="select">
+                <select [(ngModel)]="contact_data.Nletstat">
+                  <option value="Bounced">Bounced</option>
+                  <option value="Good">Good</option>
+                  <option value="Opted Out">Opted Out</option>
+                </select>
+                <i></i>
+              </label>
+            </section>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>
+            <strong>
+              Portal & Support Information
+            </strong>
+          </legend>
+          <div class="row">
+            <section class="col col-lg-6">
+              <label class="label">Portal Access</label>
+              <label class="select">
+                <select [(ngModel)]="contact_data.PortalAcc">
+                  <option value="No">No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+                <i></i>
+              </label>
+            </section>
+            <section class="col col-lg-6">
+              <label class="label">Receive Release Notes?</label>
+              <label class="select">
+                <select [(ngModel)]="contact_data.RelNotif">
+                  <option value="No">No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+                <i></i>
+              </label>
+            </section>
+          </div>
+          <div class="row">
+            <section class="col col-lg-6">
+              <label class="label">Portal Access Type</label>
+              <label class="select">
+                <select [(ngModel)]="contact_data.PAccessTyp">
+                  <option value="Admin">Admin</option>
+                  <option value="User">User</option>
+                </select>
+                <i></i>
+              </label>
+            </section>
+            <section class="col col-lg-6">
+              <label class="label">Receive Downtime Notifications?</label>
+              <label class="select">
+                <select [(ngModel)]="contact_data.DownNotif">
+                  <option value="No">No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+                <i></i>
+              </label>
+            </section>
+          </div>
+          <div class="row">
+            <section class="col col-lg-6">
+              <label class="label">ADDITIONAL INFORMATION</label>
+              <label class="input">
+                <input type="text" [(ngModel)]="contact_data.AddlInfo">
+              </label>
+            </section>
+            <section class="col col-lg-6">
+              <label class="label">Password</label>
+              <label class="input">
+                <input type="text" [(ngModel)]="contact_data.Pswd">
+              </label>
+            </section>
+          </div>
+        </fieldset>
+      </div>
+      <!-- end widget body-->
+    </div>
+  </article>
+</div>
+<div style="width: 100px; margin:auto; position:absolute; top:44%; left:46%; z-index:99;" [ngClass]="{'display-none' : !loading }">
+  <i class="fas fa-circle-notch fa-spin text-primary" style="font-size:24px;"></i>
+</div>
